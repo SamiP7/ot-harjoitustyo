@@ -1,3 +1,5 @@
+hassun hauska muutos
+
 Sami-Air:ot_viikko1 Foti$ git log --stat | cat
 commit 675b8b675a7875f31d9c25583130faa79668a41d
 Author: Sami <sami.parkkinenn@gmail.com>
