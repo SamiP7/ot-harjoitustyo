@@ -1,0 +1,115 @@
+Sami-Air:ot_viikko1 Foti$ git log --stat | cat
+commit 675b8b675a7875f31d9c25583130faa79668a41d
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:52:10 2019 +0200
+
+    file1 poisto ja file2 nimentä
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit b2fc25c89a96846453f33ca198efefd83489ef7f
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:48:15 2019 +0200
+
+    tiedostoja lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 59bcaaebfb7287208486e5055714ae417e4b900b
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:38:00 2019 +0200
+
+    ekan ja kolmannen muokkaus
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 6b1aa4d7a8cb14e0e97664abac00e9d38745aa11
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:34:58 2019 +0200
+
+    tiedoston nimentä ekaksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f32fe092e840c3c46837d0491a86fe6848baf42c
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:31:19 2019 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit be57be26486d31aa20605e1057e463b659ef8853
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:25:56 2019 +0200
+
+    tiedosto lisämuokkaus
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9bbdaa94cea30417b9b16b75a67ab851c597db69
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:24:27 2019 +0200
+
+    tiedosto muokkaus
+
+ tiedosto.txt | 4567 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 4566 insertions(+), 1 deletion(-)
+
+commit 83a8dff5b72913af9d0a40ca3249228ef82a9c91
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:09:47 2019 +0200
+
+    stuff lisätty
+
+ stuff/jotain.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 53db6a1718ca300e63f3e20476a715073deda43a
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 18:07:23 2019 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 05b69a08cfa190c44b0859068633526ef2434802
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 17:58:55 2019 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 1c406c4d5cdd68c64322a51919ae231aabd60f00
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 17:57:46 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 14e0d1bf0481db8e994a501468d677dd4d640c7a
+Author: Sami <sami.parkkinenn@gmail.com>
+Date:   Fri Nov 1 17:39:52 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
