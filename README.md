@@ -9,4 +9,5 @@ hassun **hauskaa**
 
 ## **Dokumentaatio**
 [Alustava vaatimusmäärittely](https://github.com/SamiP7/otharjoitustyo/blob/master/dokumentaatio/alustava%20vaatimusm%C3%A4%C3%A4rittely.md)
+
 [Tuntikirjanpito](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
