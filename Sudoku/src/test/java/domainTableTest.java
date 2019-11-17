@@ -10,12 +10,11 @@ public class domainTableTest {
     
     Table s;
     
-    @Before
-    public void setUp() {
+    public domainTableTest() {
         this.s = new Table();
         s.createAnswer();
     }
-    
+       
     @Test
     public void testIfAnswerIsViable() {
         assertTrue(s.checkIfCorrect(s.getAnswer()));

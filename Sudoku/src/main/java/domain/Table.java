@@ -6,15 +6,16 @@ public class Table {
     
     public int[][] sudokuTable = new int[9][9];
     private boolean b;
-    private int[][] sudokuAnswer = new int[9][9];
+    private int[][] sudokuAnswer;
     
     public void createAnswer() {
+        this.sudokuAnswer = new int[9][9];
         this.b = false;
         Random r = new Random();
         for (int i = 0; i < 9; i++) {
             for (int o = 0; o < 9; o++) {
                 sudokuAnswer[i][o] = r.nextInt(9) + 1;
-                if (!checkIfCorrectTemp(sudokuAnswer)) {
+                if (!checkIfCorrectTemp(sudokuAnswer) && b != true) {
                     int h = 1;
                     while (true) {
                         if (h > 9) {
@@ -30,8 +31,10 @@ public class Table {
                     }
                 }
                 if (b == true) {
-                    sudokuAnswer = new int[9][9];
-                    createAnswer();
+                    this.sudokuAnswer = new int[9][9];
+                    i = 0;
+                    o = 0;
+                    b = false;
                 }
             }
             
