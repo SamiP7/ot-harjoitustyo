@@ -2,3 +2,4 @@
 |-----------|:--------:|---------------:|
 |  10.11    |    1     | todojen luominen |
 |  17.11    |    5     | sudokun luonti ja muutaman testin teko|
+|  24.11    |    7     | sudokun tekeminen loppuun, siihen muutama metodin lisäys ja testien kirjoitus |
