@@ -1,47 +1,107 @@
 package ui;
 
+import logic.*;
 import java.util.*;
-import domain.*;
 
 public class Main {
+    
+    static private boolean done = false;
+    static private boolean correctAnswer = false;
+    static Table t = new Table();
+    static Scanner l = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        Table t = new Table();
-        Scanner l = new Scanner(System.in);
+        start();
+    }
+    
+    private static void start() {
+        String x = "";
         t.createAnswer();
         t.createSudokuFromAnswer();
-        System.out.println("Pretty much a prealpha version so close to nothing is included.");
-        System.out.println("Currently you can only view the answer and see the table and close the program.");
-        System.out.println("It's also quite buggy at the time so here's a  little word of warning.");
+        System.out.println("In this version you can play sudoku and a couple of features have been added.");
+        System.out.println("Should run somewhat smoothly but the code is a bit of a mess right now.");
         
         while (true) {
-            System.out.println("For commands press c");
-            String x = l.nextLine();
-            if (x.equals("x")) {
-                l.close();
-                System.out.println("Hope you had fun :)");
+            if (correctAnswer) {
+                System.out.println("Congratulations, you solved the puzzle :)");
                 break;
             }
-            else if (x.equals("c")) {
-                System.out.println("Press x to close the program");
-                System.out.println("To see the answer press a");
-                System.out.println("Press s to see the table");
+            
+            if (!done) {
+                System.out.println("For commands press 'c'");
+                x = l.nextLine();
             }
             
-            else if (x.equals("a")) {
+            if (x.equals("x") || done) {
+                l.close();
+                System.out.println("Generated answer: ");
+                System.out.println("");
                 for (int i = 0; i < 9; i++) {
                     System.out.println(Arrays.toString(t.getAnswer()[i]));
                 }
-            }
-            
-            else if (x.equals("s")) {
-                for (int i = 0; i < 9; i++) {
-                    System.out.println(Arrays.toString(t.sudokuTable[i]));
-                }
-            }
-            else {
+                System.out.println("");
+                System.out.println("Hope you had fun :)");
+                break;
+            } else if (x.equals("c")) {
+                System.out.println("Press 'x' to close the program");
+                System.out.println("To play press 'p'");
+            } else if (x.equals("p")) {
+                play();
+            } else {
                 System.out.println("Not a valid command");
             }
             
+        }
+    }
+    
+    private static void play() {
+        System.out.println("Press 'x' if you want to quit");
+        System.out.println("Press 'c' to clear the table");
+        System.out.println("Press 'p' to cancel last move");
+        System.out.println("To add a number to the table, just write them in a single line");
+        System.out.println("For example '123' means add number 3 to line 2 column 1");
+                
+        while (true) {
+            System.out.println("");
+            for (int i = 0; i < 9; i++) {
+                System.out.println(Arrays.toString(t.getTable()[i]));
+            }
+            System.out.println("Yet to be added: " + t.yetToBeAdded());
+            String s = l.nextLine();
+            if (s.equals("x")) {
+                done = true;
+                break;
+            } else if (s.equals("c")) {
+                t.clearTable();
+                continue;
+            } else if (s.equals("p")) {
+                t.cancelLastMove();
+                continue;
+            } else if (s.length() != 3) {
+                System.out.println("Not a valid command");
+                continue;
+            }
+            boolean areValid = true;
+            String[] add = s.split("");
+            for (int i = 0; i < 3; i++) {
+                if (add[i].hashCode() > 57 || add[i].hashCode() < 49) {
+                    System.out.println("Not a valid command");
+                    areValid = false;
+                    break;
+                }
+            }
+            if (!areValid) {
+                continue;
+            }
+            t.addNumber(Integer.valueOf(add[0]), Integer.valueOf(add[1]), Integer.valueOf(add[2]));
+            if (t.isPuzzleDone()) {
+                if (t.checkIfCorrect(t.sudokuTable)) {
+                    correctAnswer = true;
+                    break;
+                } else {
+                    System.out.println("Your solution isn't correct");
+                }
+            }
         }
     }
 }
