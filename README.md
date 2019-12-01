@@ -1,3 +1,6 @@
+## **Sudoku**
+Sovelluksen tarkoituksena on tehdä toimiva sudokupeli, jossa on muutama yleisesti haluttu ominaisuus, kuten siirtojen peruminen.
+
 ## **Dokumentaatio**
 [Alustava vaatimusmäärittely](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
