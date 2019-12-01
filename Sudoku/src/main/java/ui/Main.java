@@ -9,12 +9,16 @@ public class Main {
     static private boolean correctAnswer = false;
     static Table t = new Table();
     static Scanner l = new Scanner(System.in);
+    static Interface s = new Interface();
     
     public static void main(String[] args) {
-        start();
+        
+        
+        s.launch(Interface.class);
+        
     }
     
-    private static void start() {
+    /*private static void start() {
         String x = "";
         t.createAnswer();
         t.createSudokuFromAnswer();
@@ -103,5 +107,5 @@ public class Main {
                 }
             }
         }
-    }
+    }*/
 }

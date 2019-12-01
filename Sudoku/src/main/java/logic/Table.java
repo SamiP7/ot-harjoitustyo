@@ -47,7 +47,9 @@ public class Table {
             int x = previousMove.pollLast();
             int y = previousMove.pollLast();
             int value = previousMove.pollLast();
+            amountLeft.put(sudokuTable[y][x], amountLeft.get(sudokuTable[y][x]) + 1);
             sudokuTable[y][x] = value;
+            amountLeft.put(sudokuTable[y][x], amountLeft.get(sudokuTable[y][x]) - 1);
         }
     }
     
@@ -95,10 +97,12 @@ public class Table {
         previousMove.clear();
     }
     
+    
     public void createAnswer() {
         this.sudokuAnswer = new int[9][9];
         this.b = false;
         Random r = new Random();
+        amountLeft.put(0, 10000);
         for (int i = 0; i < 9; i++) {
             for (int o = 0; o < 9; o++) {
                 sudokuAnswer[i][o] = r.nextInt(9) + 1;
