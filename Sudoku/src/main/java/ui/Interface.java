@@ -37,6 +37,10 @@ public class Interface extends Application {
         exit.setOnAction(event -> window.close());
     }
     
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
 
     public Scene window() {
         
@@ -98,51 +102,50 @@ public class Interface extends Application {
         GridPane a = new GridPane();
         a.setGridLinesVisible(true);
         a.getColumnConstraints().addAll(always,always,always);
-        a.getRowConstraints().addAll(r,r,r);
+        a.getRowConstraints().addAll(r, r, r);
         
         GridPane b = new GridPane();
         b.setGridLinesVisible(true);
         b.getColumnConstraints().addAll(always,always,always);
-        b.getRowConstraints().addAll(r,r,r);
+        b.getRowConstraints().addAll(r, r, r);
         
         GridPane c = new GridPane();
         c.setGridLinesVisible(true);
         c.getColumnConstraints().addAll(always,always,always);
-        c.getRowConstraints().addAll(r,r,r);
+        c.getRowConstraints().addAll(r, r, r);
         
         GridPane d = new GridPane();
         d.setGridLinesVisible(true);
         d.getColumnConstraints().addAll(always,always,always);
-        d.getRowConstraints().addAll(r,r,r);
+        d.getRowConstraints().addAll(r, r, r);
         
         GridPane e = new GridPane();
         e.setGridLinesVisible(true);
         e.getColumnConstraints().addAll(always,always,always);
-        e.getRowConstraints().addAll(r,r,r);
+        e.getRowConstraints().addAll(r, r, r);
         
         GridPane f = new GridPane();
         f.setGridLinesVisible(true);
         f.getColumnConstraints().addAll(always,always,always);
-        f.getRowConstraints().addAll(r,r,r);
+        f.getRowConstraints().addAll(r, r, r);
         
         GridPane g = new GridPane();
         g.setGridLinesVisible(true);
         g.getColumnConstraints().addAll(always,always,always);
-        g.getRowConstraints().addAll(r,r,r);
+        g.getRowConstraints().addAll(r, r, r);
         
         GridPane h = new GridPane();
         h.setGridLinesVisible(true);
         h.getColumnConstraints().addAll(always,always,always);
-        h.getRowConstraints().addAll(r,r,r);
+        h.getRowConstraints().addAll(r, r, r);
         
         GridPane j = new GridPane();
         j.setGridLinesVisible(true);
         j.getColumnConstraints().addAll(always,always,always);
-        j.getRowConstraints().addAll(r,r,r);
+        j.getRowConstraints().addAll(r, r, r);
         
         ArrayList<Button> clearButtons = new ArrayList<>();
-
-        
+      
         for (int i = 0; i < 9; i++) {
             for (int o = 0; o < 9; o++) {
                 if (i < 3 && o < 3) {
