@@ -189,46 +189,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         a.add(x, o, i);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         a.add(x, o, i);
                         
@@ -240,46 +201,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         b.add(x, o - 3, i);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         b.add(x, o - 3, i);
                     }
@@ -290,46 +212,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         c.add(x, o - 6, i);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         c.add(x, o - 6, i);
                     }
@@ -340,46 +223,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         d.add(x, o, i - 3);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         d.add(x, o, i - 3);
                     }
@@ -390,46 +234,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         e.add(x, o - 3, i - 3);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         e.add(x, o - 3, i - 3);
                     }
@@ -440,46 +245,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         f.add(x, o - 6, i - 3);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         f.add(x, o - 6, i - 3);
                     }
@@ -490,46 +256,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         g.add(x, o, i - 6);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         g.add(x, o, i - 6);
                     }
@@ -540,46 +267,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         h.add(x, o - 3, i - 6);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         h.add(x, o - 3, i - 6);
                     }
@@ -590,46 +278,7 @@ public class Interface extends Application {
                         x.setAlignment(Pos.CENTER);
                         j.add(x, o - 6, i - 6);
                     } else {
-                        Button x = new Button();
-                        x.setMaxWidth(46);
-                        x.setMaxHeight(46);
-                        GridPane.setValignment(x, VPos.CENTER);
-                        GridPane.setHalignment(x, HPos.CENTER);
-                        int q = i + 1;
-                        int w = o + 1;
-                        x.setOnAction(ev -> {
-                            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
-                                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
-                                if (!x.getText().equals(number.getText())) {
-                                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle("-fx-background-color: #ff0000; ");
-                                    }
-                                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
-                                        previousMoveStyle.addFirst(x.getStyle());
-                                        x.setStyle(null);
-                                    }
-                                    previousMoveButton.addFirst(x);
-                                    previousMoveValue.addFirst(x.getText());
-                                }
-                                if (number.getText().equals("0")) {
-                                    x.setText("");
-                                } else {
-                                    x.setText(number.getText());
-                                }
-                            }
-                            if (!sudoku.isPuzzleDone()) {
-                                main.setTop(new Label());
-                            }
-                            if (sudoku.isPuzzleDone()) {
-                                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
-                                    timer.stop();
-                                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
-                                } else {
-                                    main.setTop(new Label("Your solution is incorrect"));
-                                }
-                            }
-                        });
+                        Button x = createButton(i, o, number, timer);
                         clearButtons.add(x);
                         j.add(x, o - 6, i - 6);
                     }
@@ -681,6 +330,51 @@ public class Interface extends Application {
         Scene scene = new Scene(main);
         
         return scene;
+    }
+    
+    private Button createButton(int i, int o, Label number, AnimationTimer timer) {
+        Button x = new Button();
+        x.setMaxWidth(46);
+        x.setMaxHeight(46);
+        GridPane.setValignment(x, VPos.CENTER);
+        GridPane.setHalignment(x, HPos.CENTER);
+        int q = i + 1;
+        int w = o + 1;
+        x.setOnAction(ev -> {
+            if (sudoku.yetToBeAdded().get(Integer.valueOf(number.getText())) != 0) {
+                sudoku.addNumber(q, w, Integer.valueOf(number.getText()));
+                if (!x.getText().equals(number.getText())) {
+                    if (!sudoku.checkIfCorrectTemp(sudoku.sudokuTable)) {
+                        previousMoveStyle.addFirst(x.getStyle());
+                        x.setStyle("-fx-background-color: #ff0000; ");
+                    }
+                    if (sudoku.checkIfCorrectTemp(sudoku.sudokuTable) || number.getText().equals("0")) {
+                        previousMoveStyle.addFirst(x.getStyle());
+                        x.setStyle(null);
+                    }
+                    previousMoveButton.addFirst(x);
+                    previousMoveValue.addFirst(x.getText());
+                }
+                if (number.getText().equals("0")) {
+                    x.setText("");
+                } else {
+                    x.setText(number.getText());
+                    }
+            }
+            if (!sudoku.isPuzzleDone()) {
+                main.setTop(new Label());
+            }
+            if (sudoku.isPuzzleDone()) {
+                if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
+                    timer.stop();
+                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
+                } else {
+                    main.setTop(new Label("Your solution is incorrect"));
+                }
+            }
+        });
+        
+        return x;                
     }
     
 }
