@@ -8,8 +8,11 @@ Sovelluksen tarkoituksena on tehdä toimiva sudokupeli, jossa on muutama yleises
 
 [Arkkitehtuuri](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 ## **Releaset**
-[Viikko 5](https://github.com/SamiP7/ot-harjoitustyo/releases)
+[Viikko 5](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko5)
+[Viikko 6](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko6)
 
 ## **Komentorivitoiminnot**
 
@@ -39,6 +42,10 @@ Checkstyle tarkistukset voidaan suorittaa komennolla
 
 Virheilmoitukset voidaan löytää tiedostosta *target/site/checkstyle.html*
 
-**HUOM**
+### **JavaDoc**
 
-Tällä hetkellä ohjelma saattaa vaatia heap sizen kasvatusta, sillä toimivaa sudokua on vaikea saada tehtyä ilman vaativaa rekursiota.
+JavaDoc generoidaan komennolla
+
+`mvn javadoc:javadoc`
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto *target/site/apidocs/index.html*
