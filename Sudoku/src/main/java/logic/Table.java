@@ -4,6 +4,11 @@ import java.util.*;
 
 public class Table {
     
+    /**
+     * Hidden array which replicates the values of shown one.
+     * This makes sure that all the added values are correct and checks when the puzzle is done.
+     * All the methods for the shown one are also first ran through this one.
+     */
     public int[][] sudokuTable = new int[9][9];
     private boolean b;
     private int[][] sudokuAnswer;
@@ -11,17 +16,22 @@ public class Table {
     private HashMap<Integer, Integer> amountLeft = new HashMap<>();
     private ArrayDeque<Integer> previousMove = new ArrayDeque<>();
     
-    
+    /**
+     * 
+     * @param y
+     * position on y-axis
+     * 
+     * @param x
+     * 
+     * position on x-axis
+     * @param number 
+     * 
+     * number to be added
+     */
     public void addNumber(int y, int x, int number) {
         y--;
         x--;
-        if (y < 0 || y > 8 || x < 0 || x > 8 || number < 1 || number > 9) {
-            System.out.println("Only numbers between 1-9 allowed here.");
-        } else if (!canAdd[y][x]) {
-            System.out.println("Part of the original puzzle.");
-        } else if (amountLeft.get(number) == 0) {
-            System.out.println("All already added.");
-        } else {
+        if (canAdd[y][x]) {        
             if (sudokuTable[y][x] == 0) {
                 previousMove.addLast(sudokuTable[y][x]);
                 previousMove.addLast(y);
@@ -38,9 +48,12 @@ public class Table {
                 amountLeft.put(number, amountLeft.get(number) - 1);
                 sudokuTable[y][x] = number;
             }
-        }
-        
+        }   
     }
+    
+    /**
+     * returns the last added value on sudokuTable to its previous value
+     */
     
     public void cancelLastMove() {
         if (!previousMove.isEmpty()) {
@@ -53,6 +66,11 @@ public class Table {
         }
     }
     
+    /**
+     * 
+     * @return returns true if sudokuTable doesn't contain any zeroes, else returns false 
+     */
+    
     public boolean isPuzzleDone() {
         for (int i = 0; i < 9; i++) {
             for (int o = 0; o < 9; o++) {
@@ -64,17 +82,18 @@ public class Table {
         return true;
     }
     
-    public int[][] getTable() {
-        return this.sudokuTable;
-    }
-    
-    public int[][] getAnswer() {
-        return this.sudokuAnswer;
-    }
+    /**
+     * 
+     * @return returns a map of all the values in sudokuTable which are not yet added
+     */
     
     public HashMap<Integer, Integer> yetToBeAdded() {
         return this.amountLeft;
     }
+    
+    /**
+     * puts all values back to 0 in sudokuTable, where the value is not part of the puzzle itself
+     */
     
     public void clearTable() {
         for (int i = 0; i < 9; i++) {
@@ -97,6 +116,9 @@ public class Table {
         previousMove.clear();
     }
     
+    /**
+     * creates a sudoku answer
+     */
     
     public void createAnswer() {
         this.sudokuAnswer = new int[9][9];
@@ -132,6 +154,10 @@ public class Table {
             
         }
     }
+    
+    /**
+     * creates a puzzle from the known answer by putting the value to 0 on certain spots
+     */
     
     public void createSudokuFromAnswer() {
         for (int i = 0; i < 9; i++) {
@@ -176,6 +202,13 @@ public class Table {
             }
         }
     }
+    
+    /**
+     * 
+     * @param sudokuTable
+     * @return true if the table doesn't contain the same number in 3x3 spots and in same horizontal-
+     * and vertical lines AND doesn't contain the number 0, else false
+     */
     
     public boolean checkIfCorrect(int[][] sudokuTable) {
         for (int i = 0; i < 9; i++) {
@@ -278,13 +311,19 @@ public class Table {
         return true;
     }
     
+    /**
+     * 
+     * @param sudokuTable
+     * @return same as checkIfCorrect but allows the number 0 and doesn't do any checks for it
+     * 
+     * @see logic.Table#checkIfCorrect
+     */
+    
     public boolean checkIfCorrectTemp(int[][] sudokuTable) {
         for (int i = 0; i < 9; i++) {
             for (int o = 0; o < 9; o++) {
                 int h = sudokuTable[i][o];
-                if (h == 0) {
-                    continue;
-                } else {
+                if (h != 0) {
                     for (int x = 0; x < 9; x++) {
                         if (x != i && sudokuTable[x][o] == h) {
                             return false;

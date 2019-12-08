@@ -16,10 +16,6 @@ public class domainTableTest {
         s.createAnswer();
     }
        
-    @Test
-    public void testIfAnswerIsViable() {
-        assertTrue(s.checkIfCorrect(s.getAnswer()));
-    }
     
     @Test
     public void testIfSudokuIsNotCompleted() {
