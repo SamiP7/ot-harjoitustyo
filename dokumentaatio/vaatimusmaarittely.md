@@ -9,9 +9,9 @@ ja myös sulkea sovelluksen. Toinen on tietenkin itse sudoku.
 
 * Käyttäjä voi katsoa parhaita aikojaan
 * Käyttäjä ~~voi aloittaa uuden pelin~~ tai jatkaa aikaisempaansa
-	* Sovellus pitää yllä käytettyä aikaa
-	* Sovellus ilmoittaa selvistä virhesiirroista, eli esim. sama luku ei
-	  voi esiintyä samalla rivillä tai sarakkeella
+	* ~~Sovellus pitää yllä käytettyä aikaa~~
+	* ~~Sovellus ilmoittaa selvistä virhesiirroista, eli esim. sama luku ei
+	  voi esiintyä samalla rivillä tai sarakkeella~~
 
 ## **Jatkokehitysideoita**
 
