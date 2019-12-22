@@ -3,7 +3,7 @@
 
 ## **Rakenne**
 
-Ohjelma koostuu kahdesta paketista, joista yksi hallitsee käyttöliittymää ja toinen sovelluslogiikkaa. 
+Ohjelma koostuu kahdesta paketista, joista yksi hallitsee käyttöliittymää ja toinen sovelluslogiikkaa. Kumpikin näistä sijaitsee paketin sudokuapp alaisuudessa, jota alla oleva kuva ei ilmoita.
 
 ![](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/PakkausRakenne.png)
 
@@ -12,11 +12,17 @@ Käyttöliittymä on toteutettu *JavaFx:llä*, mikä hieman vaikeuttaa näiden k
 
 ## **Käyttöliittymä**
 
-Käyttöliittymä on itse peli, joka on toteutettu isona BorderPane-oliona, joka sisältää kaikki pelin nappulat ja itse laudan.
+Käyttöliittymä koostuu kolmesta näkymästä
 
-Käyttöliittymää on pyritty eristämään mahdollisimman paljon sovelluslogiikasta, mutta tämä joutuu kuitenkin pitämään joitakin tietoja itse yllä, sillä sovelluslogiikka ei tähän pysty luokkien olioiden erilaisuuksien vuoksi. Suurin osa ohjelman tärkeistä toiminnallisuuksista saa käyttöliittymä kummiskin sovelluslogiikalta, tai vähintään siltä saamia tietoja joita se pitää muistissa.
+  * päävalikko
+  * parhaat ajat
+  * peli
 
-Kun pelissä tehdään siirtoja, ohjelma tarkastaa että onko siirto oikein ja onko taulu täynnä. Jos siirto ei ole oikein, niin merkkaa se ruudun punaisella, ja jatkaa tätä niin pitkään kunnes kaikki virhesiirron jälkeen olleet siirrot on poistettu ja myös itse virhesiirto. Kun taulu on täynnä, ilmoittaa ohjelma onko ratkaisu oikein taikka väärin.
+Jokainen näistä on toteutettu omana [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html) olionaan. Yksi näistä on aina sijoitettuna ohjelman [stageen](https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html). Näistä peli on rakennettu luokassa [sudokuapp.ui.SudokuInterface.](https://github.com/SamiP7/ot-harjoitustyo/blob/master/Sudoku/src/main/java/sudokuapp/ui/SudokuInterface.java) sen laajuuden vuoksi ja muut luokassa [sudokuapp.ui.MainMenu.](https://github.com/SamiP7/ot-harjoitustyo/blob/master/Sudoku/src/main/java/sudokuapp/ui/MainMenu.java). Sovellus käynnistyy luokasta [sudokuapp.ui.Main.](https://github.com/SamiP7/ot-harjoitustyo/blob/master/Sudoku/src/main/java/sudokuapp/ui/Main.java), missä se ensin näyttää päävalikon.
+
+Käyttöliittymää on pyritty eristämään mahdollisimman paljon sovelluslogiikasta, mutta tämä joutuu kuitenkin pitämään joitakin tietoja itse yllä, sillä sovelluslogiikka ei tähän pysty luokkien olioiden erilaisuuksien vuoksi. Suurin osa ohjelman tärkeistä toiminnallisuuksista saa käyttöliittymä kummiskin sovelluslogiikalta, tai vähintään siltä saamia tietoja, joita se pitää muistissa.
+
+Kun pelissä tehdään siirtoja, ohjelma tarkastaa että onko siirto oikein ja onko taulu täynnä. Jos siirto ei ole oikein, niin merkkaa se ruudun punaisella, ja jatkaa tätä niin pitkään kunnes kaikki virhesiirron jälkeen olleet siirrot on poistettu ja myös itse virhesiirto. Kun taulu on täynnä, ilmoittaa ohjelma onko ratkaisu oikein taikka väärin. Jos ratkaisu on oikein, tallettaa peli siihen käytetyn ajan tietokantaan ja pistää kaikki muut napit paitsi paluun päänäkymään pois käytöstä. Aina jos jotain lukua on lisätty 9 taulukkoon, pistää peli sen nappulan pois käytöstä, jotta ei vahingossakaan lisäisi lukuja liikaa. Tämä myös hyvin näyttää pelaajalle, jos on kaikki mahdolliset luvut tästä jo lisännyt. 
 
 ## **Sovelluslogiikka**
 
@@ -27,11 +33,26 @@ Sovelluksen tärkeät metodit suoritetaan kaikki luokassa Table. Tässä esim. l
 * checkIfCorrect(int[][] sudokuTable)
 * addNumber(int y, int x, int number)
 
-Seuraava kaavio pyrkii avaamaan sudokun luomista käyttöliittymää varten:
+Luokassa Hiscores alustetaan tietokanta ja lisätään tuloksia siihen. Se myös palauttaa 10 parasta aikaa hakemalla ne tietokannasta. Tiedon haku ei noudata DAO-mallia, sillä kerättävä tieto on niin vähäistä ettei tuntunut järkevältä alkaa tekemään tätä. Sovellus ei kuitenkaan suoraan käytä tietokanna tietoa vaan palauttaa sen aina erillisenä oliona.
+
+Sovelluksen käynnistyttyä luo tämä sille uuden tietokannan projektikansioon johon se kerää näitä suoritus aikoja.
+
+## **Päätoiminnalisuudet**
+
+Kuvataan muutamia sovelluksen päätoimintoja sekvenssikaavioina.
+
+**sudokun luonti**
+
+Kun päävalikossa painetaan nappia *New game* alkaa luokka *Table* suorittamaan metodia *createAnswer()* kaavio mukaisesti. Table kutsuu tätä metodia rekursiivisesti niin pitkään, kunnes *checkIfCorrect()* palauttaa true. Kun vastaus on saatu, poistetaan tästä vastauksesta satunnainen määrä lukuja, jonka jälkeen meillä on valmis sudoku pulma.
 
 ![](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Sekvenssikaavio.png)
 
-Tämä on ohjelman tärkein toiminnallisuus ja myöhemmin näitä muita toiminnallisuuksia lisätään myös tänne.
+Kun olemme luoneet sudokun, määrittää luokka *SudokuInterface* sille scene olion joka sijoitetaan luokan *MainMenu* stage olioon.
+
+
+**luvun lisäys sudokuun**
+
+Oletetaan, että meillä on jo luokka Table. Kaavio näyttää mitä eri metodeja ja muuttujia kutsutaan/muutetaan kun lisätään luku sudokuun.
 
 ## **Heikkouksia**
 
