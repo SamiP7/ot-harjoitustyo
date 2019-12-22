@@ -21,4 +21,4 @@ Sovellus on haettu ja testattu [käyttöohjeen](https://github.com/SamiP7/ot-har
 
 ### Sovellukseen jääneitä ongelmia
 
-Sovellukseen jäi paljon copy-paste koodia, sillä tämän poistoon ei jäänyt tarpeeksi aikaa. Sovelluksen luokkarakenteessa on parantamisen varaa, sillä tällä hetkellä vain yksi luokka tekee lähes kaiken peliin liittyvät metodit. Käyttöliittymää ei saatu poistettua checkstyle tarkastelun alta, sillä ohjelma antoi aina virheilmoituksia tätä tehdessä.
+Sovellukseen jäi paljon copy-paste koodia, sillä tämän poistoon ei jäänyt tarpeeksi aikaa. Sovelluksen luokkarakenteessa on parantamisen varaa, sillä tällä hetkellä vain yksi luokka tekee lähes kaiken peliin liittyvät metodit. Käyttöliittymää ei saatu poistettua checkstyle tarkastelun alta, sillä ohjelma antoi aina virheilmoituksia tätä tehdessä. En ehtinyt myöskään saamaan Linuxille toimimaan *Hiscores* nappia oikein, sillä tällä hetkellä se ei ainakaan Linuxilla tallenna parasta aikaa. Tämä kylläkin toimi Macilla ja Windowsilla.
