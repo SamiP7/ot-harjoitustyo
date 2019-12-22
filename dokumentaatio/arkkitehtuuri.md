@@ -39,7 +39,7 @@ Sovelluksen käynnistyttyä luo tämä sille uuden tietokannan projektikansioon 
 
 ## **Päätoiminnalisuudet**
 
-Kuvataan muutamia sovelluksen päätoimintoja sekvenssikaavioina.
+Kuvataan muutamia sovelluksen päätoimintoja.
 
 **sudokun luonti**
 
@@ -52,10 +52,20 @@ Kun olemme luoneet sudokun, määrittää luokka *SudokuInterface* sille scene o
 
 **luvun lisäys sudokuun**
 
-Oletetaan, että meillä on jo luokka Table. Kaavio näyttää mitä eri metodeja ja muuttujia kutsutaan/muutetaan kun lisätään luku sudokuun.
+Oletetaan, että meillä on jo luokka Table. Kaavio näyttää mitä eri muuttujia kutsutaan/muutetaan luokassa kun lisätään luku sudokuun.
+
+![](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/addNumber.png)
+
+Pelin käyttöliittymässä tämä toimii aivan samalla tavalla, paitsi sen täytyy pitää kirjaa itse aiemmista siirroista tallentamalla nappuloiden aikaisempia arvoja ja värejä listaan. Tämän lisäksi tarkastetaan onko luvun lisäyksen jälkeen sudoku valmis. Jos on, ilmoitetaan onko ratkaisu oikein vai väärin.
+
+**siirron peruminen**
+
+Kun perumme siirron, tarkastamme ensin onko lista *previousMove* tyhjä. Jos ei ole, otetaan listasta kolme ensimmäistä arvoa ja sidotaan ne muuttujiin x, y ja value. Tämän jälkeen kasvatamme mapin *amountLeft* kohtaa sudokuTable[y][x] yhdellä. Sitten muutamme täksi arvoksi value ja vähennämme mapista *amountLeft* kohtaa value arvolla 1.
+
+Tämäkin toimii käyttöliittymässä samalla tavalla, paitsi meidän vain täytyy pitää kirjalla myös nappuloita joihin siirtoja on tehty, niiden arvoja ja värejä.
 
 ## **Heikkouksia**
 
-Ohjelman toimminnallisuudet sijaitsevat vain kahdessa eri luokassa, joten näitä pitäisi pystyä eriyttämään hieman. Varsinkin itse Table luokkaa pitää vielä hajauttaa, sillä se on vastuussa turhan monesta ohjelman toiminnallisuudesta.
+Ohjelman päätoimminnallisuudet sijaitsevat vain yhdessä luokassa, joten tätä pitäisi pystyä eriyttämään hieman, jotta ohjelmaa olisi helpompi laajentaa. Tämä myös hankoitti huomattavasti erilaisten metodien kuvausta. Datan säilöminen erilaisista siirroista olisi voinut toteuttaa paremmin, vaikka kuvaamalla jokaista siirtoa omana olionaan. Pelin käyttöliittymän olisi voinut toteuttaa eri tavalla, sillä nykyisellä on tietoa hankala säilöä, jonka vuoksi oli turhan hankalaa esim. toteuttaa mahdollisuus aiemman pelin jatkoon sovelluksen suljettua.
 
-Ohjelmassa on paljon toisteista koodia if-else-lauseiden sisällä, mutta tätä on erittäin hankala välttää kun ottaa huomioon ohjelman tarkoituksen. Toisteisuus on siis melkeinpä välttämätöntä, mutta pyrin korjaamaan tätä ainakin hieman.
+Ohjelmassa on jäänyt paljon toisteista koodia if-else-lauseiden sisällä, mutta tätä on ollut hankala välttää ottaen huomioon sovelluksen tarkoituksen. Tätä olisi voinut kuitenkin pyrkiä korjaamaan metodilla, joka korvaisi copy-paste koodin.
