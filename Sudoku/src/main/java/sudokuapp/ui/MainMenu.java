@@ -1,4 +1,4 @@
-package ui;
+package sudokuapp.ui;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import logic.Hiscores;
+import sudokuapp.logic.Hiscores;
 
 public class MainMenu extends Application {
 
     @Override
     public void start(Stage window) throws SQLException {
         Hiscores hiscore = new Hiscores();
-        hiscore.createDatabase();
+        hiscore.createDatabase("db");
         window.setTitle("Sudoku :)");
         BorderPane view = new BorderPane();
         VBox buttons = new VBox();

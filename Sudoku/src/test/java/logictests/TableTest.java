@@ -1,17 +1,19 @@
-import logic.Table;
-import org.junit.After;
-import org.junit.AfterClass;
+package logictests;
+
+import java.util.HashMap;
+import sudokuapp.logic.Table;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class domainTableTest {
+public class TableTest {
     
     Table s;
     
-    public domainTableTest() {
+    
+    @Before
+    public void setUp() {
         this.s = new Table();
         s.createAnswer();
     }
@@ -21,6 +23,30 @@ public class domainTableTest {
     public void testIfSudokuIsNotCompleted() {
         s.createSudokuFromAnswer();
         assertFalse(s.checkIfCorrect(s.sudokuTable));
+    }
+    
+    @Test
+    public void testIfSudokuIsCompleted() {
+        s.createSudokuFromAnswer();
+        assertFalse(s.isPuzzleDone());
+    }
+    
+    @Test
+    public void testNumberLeft() {
+        s.createSudokuFromAnswer();
+        HashMap<Integer, Integer> left = new HashMap<>();
+        for (int i = 1; i <= 9; i++) {
+            left.put(i, 9);
+        }
+        left.put(0, 10000);
+        for (int i = 0; i < 9; i++) {
+            for (int o = 0; o < 9; o++) {
+                if (s.sudokuTable[i][o] != 0) {
+                    left.put(s.sudokuTable[i][o], left.get(s.sudokuTable[i][o]) - 1);
+                }
+            }
+        }
+        assertEquals(left, s.yetToBeAdded());
     }
     
     @Test

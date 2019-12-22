@@ -1,8 +1,9 @@
-package ui;
+package sudokuapp.ui;
 
+import sudokuapp.logic.Table;
+import sudokuapp.logic.Hiscores;
 import java.util.*;
 import javafx.animation.AnimationTimer;
-import logic.*;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;

@@ -1,4 +1,4 @@
-package logic;
+package sudokuapp.logic;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package logic;
+package sudokuapp.logic;
 
 import java.sql.*;
 import java.util.*;
@@ -10,8 +10,11 @@ public class Hiscores {
      * @throws SQLException 
      */
     
-    public void createDatabase() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:db");
+    private String db;
+    
+    public void createDatabase(String db) throws SQLException {
+        this.db = db;
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:" + db);
         PreparedStatement makeDatabase = connection.prepareStatement(
             "CREATE TABLE IF NOT EXISTS Hiscores(id INTEGER AUTO_INCREMENT PRIMARY KEY, time INTEGER);");
         makeDatabase.execute();
@@ -26,7 +29,7 @@ public class Hiscores {
      */
     
     public void createTime(Integer time) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:db");
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:" + db);
         PreparedStatement newTime = connection.prepareStatement(
             "INSERT INTO Hiscores(time)"
             + " VALUES (?);");
@@ -46,7 +49,7 @@ public class Hiscores {
     
     public ArrayList<Integer> returnTimes() throws SQLException {
         ArrayList<Integer> allTimes = new ArrayList<>();
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:db");
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:" + db);
         PreparedStatement getTimes = connection.prepareStatement("SELECT * FROM Hiscores;");
         ResultSet rS = getTimes.executeQuery();
         while (rS.next()) {
