@@ -15,6 +15,7 @@ Sovelluksen tarkoituksena on tehdä toimiva sudokupeli, jossa on muutama yleises
 ## **Releaset**
 [Viikko 5](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko5)
 [Viikko 6](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko6)
+[Loppupalautus](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 ## **Komentorivitoiminnot**
 
