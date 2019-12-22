@@ -1,6 +1,6 @@
 # **Käyttöohje**
 
-Lataa tiedosto [Sudoku-1.0-SNAPSHOT.jar](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko6)
+Lataa tiedosto [Sudoku-1.0-SNAPSHOT.jar](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 ## **Pelaaminen**
 
