@@ -10,6 +10,8 @@ Sovelluksen tarkoituksena on tehdä toimiva sudokupeli, jossa on muutama yleises
 
 [Käyttöohje](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/SamiP7/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 ## **Releaset**
 [Viikko 5](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko5)
 [Viikko 6](https://github.com/SamiP7/ot-harjoitustyo/releases/tag/Viikko6)
