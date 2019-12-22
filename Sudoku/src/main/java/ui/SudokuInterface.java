@@ -1,57 +1,49 @@
 package ui;
 
-import java.awt.Color;
 import java.util.*;
 import javafx.animation.AnimationTimer;
 import logic.*;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.stage.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Interface extends Application {
+public class SudokuInterface {
     
-    private Table sudoku = new Table();
-    private BorderPane main = new BorderPane();
-    private Button exit;
-    private ArrayDeque<Button> previousMoveButton = new ArrayDeque<>();
-    private ArrayDeque<String> previousMoveValue = new ArrayDeque<>();
-    private ArrayDeque<String> previousMoveStyle = new ArrayDeque<>();
-    
-    
-    
-    @Override
-    public void start(Stage window) {
-        sudoku.createAnswer();
-        sudoku.createSudokuFromAnswer();
-        window.setScene(window());
-        window.show();
-        exit.setOnAction(event -> window.close());
-    }
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
+    private Table sudoku;
+    private BorderPane main;
+    public Button exit = new Button("Main Menu");
+    private ArrayDeque<Button> previousMoveButton;
+    private ArrayDeque<String> previousMoveValue;
+    private ArrayDeque<String> previousMoveStyle;
+    private long time;
+    private Hiscores hiscoreList = new Hiscores();
+    private ArrayList<Button> buttons;
+    private Button previous;
+    private Button clear;
+    private Button erase; 
+     
 
     public Scene window() {
-        
+        sudoku = new Table();
+        main = new BorderPane();
+        sudoku.createAnswer();
+        sudoku.createSudokuFromAnswer();
+        previousMoveButton = new ArrayDeque<>();
+        previousMoveValue = new ArrayDeque<>();
+        previousMoveStyle = new ArrayDeque<>();
         VBox commands = new VBox();
         commands.setSpacing(15);
         commands.setAlignment(Pos.CENTER);
@@ -67,16 +59,15 @@ public class Interface extends Application {
             public void handle(long now) {
                 long elapsed = System.currentTimeMillis() - startTime;
                 timerLabel.setText("Time: " + Long.toString(elapsed / 1000) + " s");
+                time = (elapsed / 1000);
             }
         };
         
         timer.start();
-        
-        Button previous = new Button("Cancel");
-        Button clear = new Button("Clear");
-        Button erase = new Button("Erase");
-        exit = new Button("Exit");        
-        
+              
+        previous = new Button("Cancel");
+        clear = new Button("Clear");
+        erase = new Button("Erase"); 
         commands.getChildren().add(erase);
         commands.getChildren().add(previous);
         commands.getChildren().add(clear);
@@ -97,7 +88,7 @@ public class Interface extends Application {
         Button number7 = new Button("7");
         Button number8 = new Button("8");
         Button number9 = new Button("9");
-        ArrayList<Button> buttons = new ArrayList<>();
+        buttons = new ArrayList<>();
         buttons.add(number1);
         buttons.add(number2);
         buttons.add(number3);
@@ -298,6 +289,14 @@ public class Interface extends Application {
                 } else {
                     x.setStyle(previousMoveStyle.pollFirst());
                 }
+                for (int numbers = 1; numbers <= 9; numbers++) {
+                        if (sudoku.yetToBeAdded().get(numbers) == 0) {
+                            buttons.get(numbers - 1).setDisable(true);
+                        }
+                        if (sudoku.yetToBeAdded().get(numbers) != 0) {
+                            buttons.get(numbers - 1).setDisable(false);
+                        }
+                }
             }
         });
         clear.setOnAction(event -> {
@@ -306,6 +305,14 @@ public class Interface extends Application {
             previousMoveButton.clear();
             previousMoveValue.clear();
             for (Button z : clearButtons) {
+                for (int numbers = 1; numbers <= 9; numbers++) {
+                        if (sudoku.yetToBeAdded().get(numbers) == 0) {
+                            buttons.get(numbers - 1).setDisable(true);
+                        }
+                        if (sudoku.yetToBeAdded().get(numbers) != 0) {
+                            buttons.get(numbers - 1).setDisable(false);
+                        }
+                }
                 z.setText("");
                 z.setStyle(null);
             }
@@ -352,6 +359,14 @@ public class Interface extends Application {
                         previousMoveStyle.addFirst(x.getStyle());
                         x.setStyle(null);
                     }
+                    for (int numbers = 1; numbers <= 9; numbers++) {
+                        if (sudoku.yetToBeAdded().get(numbers) == 0) {
+                            buttons.get(numbers - 1).setDisable(true);
+                        }
+                        if (sudoku.yetToBeAdded().get(numbers) != 0) {
+                            buttons.get(numbers - 1).setDisable(false);
+                        }
+                    }
                     previousMoveButton.addFirst(x);
                     previousMoveValue.addFirst(x.getText());
                 }
@@ -367,7 +382,16 @@ public class Interface extends Application {
             if (sudoku.isPuzzleDone()) {
                 if (sudoku.checkIfCorrect(sudoku.sudokuTable)) {
                     timer.stop();
-                    main.setCenter(new Label("You solved the puzzle, feel free to exit now :)"));
+                    try {
+                        hiscoreList.createTime((int)time);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(SudokuInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    previous.setDisable(true);
+                    erase.setDisable(true);
+                    clear.setDisable(true);
+                    sudoku = new Table();
+                    main.setCenter(new Label("You solved the puzzle :)"));
                 } else {
                     main.setTop(new Label("Your solution is incorrect"));
                 }
